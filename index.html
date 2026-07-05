@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpecScope — Find the right phone, laptop or PC for your budget</title>
+<meta name="description" content="Tell SpecScope your budget and what you need a device for. It scans the options and tells you exactly what to buy, and why.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scanline-overlay" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">SPEC<span class="accent">SCOPE</span></span>
+    </div>
+    <div class="header-status">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>DIAGNOSTIC READY</span>
+    </div>
+  </div>
+</header>
+
+<!--
+  AD SLOT — HEADER BANNER
+  Once your Google AdSense account is approved, paste your <ins class="adsbygoogle">
+  snippet inside #ad-slot-top and remove the "ad-slot--empty" class below.
+-->
+<div id="ad-slot-top" class="ad-slot ad-slot--empty"></div>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">// device selection, decoded</p>
+    <h1>Stop guessing between<br>twenty phones with the<br>same spec sheet.</h1>
+    <p class="hero-sub">Tell the console your budget and what the device is actually for. It runs the comparison and hands you a straight answer — no jargon, no fifty open tabs.</p>
+  </section>
+
+  <section class="console wrap" id="console">
+    <div class="console-panel">
+      <div class="console-panel-header">
+        <span class="console-title">INPUT CONSOLE</span>
+        <span class="console-id">FORM-01</span>
+      </div>
+
+      <form id="scope-form">
+
+        <div class="field-group">
+          <label class="field-label"><span class="step-tag">01</span> Device type</label>
+          <div class="chip-row" data-group="deviceType" role="group" aria-label="Device type">
+            <button type="button" class="chip" data-value="Smartphone">Smartphone</button>
+            <button type="button" class="chip" data-value="Laptop">Laptop</button>
+            <button type="button" class="chip" data-value="Desktop PC">Desktop PC</button>
+            <button type="button" class="chip" data-value="Tablet">Tablet</button>
+            <button type="button" class="chip" data-value="Smartwatch">Smartwatch</button>
+            <button type="button" class="chip" data-value="Not sure yet">Not sure yet</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="budget-range"><span class="step-tag">02</span> Budget</label>
+          <div class="budget-row">
+            <div class="currency-toggle" data-group="currency" role="group" aria-label="Currency">
+              <button type="button" class="curr-chip" data-value="₹">₹ INR</button>
+              <button type="button" class="curr-chip" data-value="$">$ USD</button>
+              <button type="button" class="curr-chip" data-value="€">€ EUR</button>
+            </div>
+            <div class="budget-input-wrap">
+              <span class="budget-symbol" id="budget-symbol">₹</span>
+              <input type="number" id="budget-number" min="0" step="500" placeholder="50000">
+            </div>
+          </div>
+          <input type="range" id="budget-range" min="0" max="200000" step="500" value="50000">
+          <div class="range-scale"><span>Tight</span><span>Mid-range</span><span>Flagship</span></div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label"><span class="step-tag">03</span> What's it mainly for?</label>
+          <div class="chip-row" data-group="useCase" role="group" aria-label="Primary use case">
+            <button type="button" class="chip" data-value="Gaming">Gaming</button>
+            <button type="button" class="chip" data-value="Work & productivity">Work &amp; productivity</button>
+            <button type="button" class="chip" data-value="Programming / development">Programming / dev</button>
+            <button type="button" class="chip" data-value="Content creation / editing">Content creation</button>
+            <button type="button" class="chip" data-value="Study / online classes">Study / classes</button>
+            <button type="button" class="chip" data-value="Photography">Photography</button>
+            <button type="button" class="chip" data-value="General browsing & social">General / social</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="extra-notes"><span class="step-tag">04</span> Anything else? <span class="optional-tag">optional</span></label>
+          <textarea id="extra-notes" rows="2" placeholder="e.g. needs to be lightweight for travel, battery life matters more than looks, prefer a specific brand, hands are small, already own a Samsung phone..."></textarea>
+        </div>
+
+        <button type="submit" class="run-btn" id="run-btn">
+          <span class="run-btn-label">RUN DIAGNOSTIC</span>
+          <span class="run-btn-arrow" aria-hidden="true">→</span>
+        </button>
+        <p class="form-error" id="form-error" role="alert"></p>
+      </form>
+    </div>
+
+    <div class="console-panel readout-panel" id="readout-panel" aria-live="polite">
+      <div class="console-panel-header">
+        <span class="console-title">DIAGNOSTIC READOUT</span>
+        <span class="console-id" id="readout-id">— </span>
+      </div>
+      <div class="readout-body" id="readout-body">
+        <p class="readout-placeholder">Fill in the console and run the diagnostic. Your match, the specs to actually check, and what to skip will show up here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    AD SLOT — MID PAGE
+    Paste your AdSense <ins> snippet here once approved, remove ad-slot--empty.
+  -->
+  <div id="ad-slot-mid" class="ad-slot ad-slot--empty wrap"></div>
+
+  <section class="how wrap">
+    <h2>How the scan works</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <span class="how-num">01</span>
+        <h3>You set the parameters</h3>
+        <p>Budget, device type, and what you'll actually use it for — the three things spec sheets never sort by.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-num">02</span>
+        <h3>The console runs the match</h3>
+        <p>It weighs your budget against real trade-offs — battery vs. weight, chipset vs. price, screen vs. portability.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-num">03</span>
+        <h3>You get a straight readout</h3>
+        <p>Specific picks, the specs worth checking yourself, and the ones that are just marketing noise.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>SPECSCOPE — device diagnostics, no sales pitch.</span>
+    <span class="footer-note">Recommendations are AI-generated guidance. Verify specs before buying.</span>
+  </div>
+  <!--
+    AD SLOT — FOOTER
+    Paste your AdSense <ins> snippet here once approved, remove ad-slot--empty.
+  -->
+  <div id="ad-slot-footer" class="ad-slot ad-slot--empty wrap"></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
