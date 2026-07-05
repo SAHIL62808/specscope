@@ -57,3 +57,4 @@ Once your site has some real content/traffic and you want to monetize:
 - Colors, fonts, and layout are all in `style.css` under the `:root` variables at the top.
 - Copy/wording lives directly in `index.html`.
 - The recommendation prompt sent to Gemini is in `script.js` inside `buildPrompt()` — edit it if you want different output fields or a different tone.
+
